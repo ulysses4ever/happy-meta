@@ -49,3 +49,6 @@ Library
         AttrGrammarParser
         ParamRules    
   
+source-repository head
+  type: git
+  location: http://github.com/ulysses4ever/happy-meta.git
