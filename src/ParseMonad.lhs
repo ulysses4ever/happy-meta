@@ -14,6 +14,7 @@
 
 > import Control.Monad( ap )
 > import Control.Applicative( Applicative(..) )
+> import qualified Control.Monad.Fail as Fail
 
 > data ParseResult a = OkP a | FailP String
 > newtype P a = P (String -> Int -> ParseResult a)
@@ -30,8 +31,9 @@
 >	m >>= k =  P $ \s l -> case runP m s l of
 >		OkP a -> runP (k a) s l
 >		FailP err -> FailP err
->	fail s = P $ \ _ _ -> FailP s
 
+> instance Fail.MonadFail P where
+>	fail s = P $ \ _ _ -> FailP s
 
 > instance Functor P where
 >   fmap f a = a >>= (return . f)

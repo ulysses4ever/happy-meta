@@ -25,6 +25,7 @@ Library
     , haskell-src-meta >=0.5.1.2&&<1.0
     , base >= 4.2 && < 5
     , array, containers
+    , fail >=4.9.0.0&&<5
     , mtl >= 1.0
 
   Build-tools: happy
